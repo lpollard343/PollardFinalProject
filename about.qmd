@@ -90,7 +90,7 @@ ggplot(aes(x = Phylum)) +
 
 ## WREF Site
 
-## Acidobacteriota 
+## Acidobacteriota
 
 # Discussion
 

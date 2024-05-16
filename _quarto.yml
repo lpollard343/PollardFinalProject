@@ -17,6 +17,7 @@ format:
     theme: minty
     css: styles.css
     toc: true
+    code_folding: hide
 
 editor: visual
 
