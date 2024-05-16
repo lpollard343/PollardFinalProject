@@ -9,8 +9,29 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "Final Project",
+    "title": "Actinobacteriota and WREF",
     "section": "",
-    "text": "This is where my project will go!!"
+    "text": "Utilizing the coding knowledge and skills learned in Biology 476: Evolutionary Genomics and Bioinformatics, students built a github repository and Quatro website. The website includes graphs and tables created by the students that showcase data from NEON metagenomes. The results are visual representations of data from the WREF collection site in Vancouver, WA as well as data on the bacteria phylum acidobacteriota. RESULTS"
+  },
+  {
+    "objectID": "about.html#wref-site",
+    "href": "about.html#wref-site",
+    "title": "Actinobacteriota and WREF",
+    "section": "WREF Site",
+    "text": "WREF Site"
+  },
+  {
+    "objectID": "about.html#actinobacteriota",
+    "href": "about.html#actinobacteriota",
+    "title": "Actinobacteriota and WREF",
+    "section": "Actinobacteriota",
+    "text": "Actinobacteriota"
+  },
+  {
+    "objectID": "about.html#acidobacteriota",
+    "href": "about.html#acidobacteriota",
+    "title": "Actinobacteriota and WREF",
+    "section": "Acidobacteriota",
+    "text": "Acidobacteriota"
   }
 ]
