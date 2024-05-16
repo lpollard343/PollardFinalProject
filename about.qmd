@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "Final Project"
 ---
 
-![Microbial Water Color by MIchelle Banks](images/microbial_water_colors.jpg)
+This is where my project will go!!
