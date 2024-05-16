@@ -5,6 +5,7 @@ project:
 website:
   title: "quarto5"
   navbar:
+    background: primary
     left:
       - href: index.qmd
         text: Home
@@ -13,7 +14,7 @@ website:
 
 format:
   html:
-    theme: cosmos
+    theme: minty
     css: styles.css
     toc: true
 

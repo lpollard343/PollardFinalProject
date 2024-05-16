@@ -1,6 +1,13 @@
 ---
 title: "Final Project"
 editor: visual
+output:
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 4
+    theme: "minty"
+    highlight: espresso
 ---
 
 This is where my project will go!!
