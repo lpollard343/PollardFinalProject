@@ -16,7 +16,23 @@ Utilizing the coding knowledge and skills learned in Biology 476: Evolutionary G
 
 # Motivating Reasons
 
+The motivating reasons behind this project were to further develop my skills in R Posit Cloud, to practice integration and manipulation of data, and to learn about acidobacteriota and the WREF site. I took Biology 478: Human Genome Analysis in the fall of 2023 and this gave me some foundational skills for working with data in R. Through my engagement with this project, I have learned more about data wrangling, ggplot, ggtrees, quatro website building, and github repositories. These will be very useful to my future career in biological research as I will be able to analyze and present data that I have collected myself for presentations and papers. The topic of this project, acidobacteriota and WREF, have given me insight into a particular bacterial phylum and its evolutionary lineage. It also shed light onto how data collection sites are chosen, managed, and utilized.
+
 # Introduction
+
+## Data Collection Site: WREF
+
+The Wind River Experimental Forest is a field site about 40 miles NE of Vancouver, WA in the Gifford Pinchot National Forest. This is in Neon's Pacific Northwest Domain (D16). The area is populated by douglas firs and western hemlocks of diverse ages. The region's climate is temperate with an average temperature of 9.2°C and average precipitation of 87.6 in. In the valley of volcanoes, Mt. Rainier and Mt. St. Helens, the soil here is comprised of volcanic ashe, pumice, basalt bedrock, and andesite (leftover from lava flows). Among the animals living in this area are elk, bobcats, cougars, black bears, various birds, and many small mammals. After being used as a seedling nursery for post-wildfire forest rehabilitation for almost a century, the NEON site was established in 2006 and sampling for the project began in 2018.
+
+![A beautiful view of a lake in the WREF site](WREFsitepretty.jpeg){fig-align="center"}
+
+![Map of the WREF site](WREFmap.png){fig-align="center"}
+
+## Bacterial Phylum: Acidobacteriota
+
+This phylum of bacteria is gram-negative and are most prevalent in soils (though they are present in a myriad of different mediums) (\@Wikipedia). The name "acidobacteriota" comes from their acidophilic– or acid loving– nature. Many species thrive in acidic environments. The majority of them are also aerobic while a minority in anaerobic. The first species of this phylum was characterized in the early 90's (Acidobacterium capsulatum), however, the phylum itself was not identified until the 2010's (\@huber_editorial_2022. Within this phylum 22 genera and 40 species have been identified.
+
+![Acidobacterium cf. capsulatum](Acidobacterium.jpg){fig-align="center"}
 
 # Methods
 
