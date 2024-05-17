@@ -73,7 +73,7 @@ The graph above displays the count of novel bacteria genera discovered per their
 
 The graph above displays the number of MAGs in each phylum at WREF and is colored by class.
 
-{{< embed code.qmd#tree2 >}}
+{{< embed code.qmd#tree7 >}}
 
 The tree above displays the phylum of bacteria found at WREF.
 
@@ -88,6 +88,10 @@ The bar graph above displays the soil composition found at WREF. Soil was classi
 {{< embed code.qmd#plot13 >}}
 
 The scatterplot above displays the soil in water pH versus the soil temperature of samples collected at WREF.
+
+{{< embed code.qmd#plot14 >}}
+
+The scatterplot above displays the elevation and sample ID of data collected at WREF. It is colored by soil temperature.
 
 ## Acidobacteriota Data
 
@@ -147,9 +151,27 @@ knitr::include_url("data/sankey-NEON_MAG_ind_pavian_WREF.txt.html")
 
 The sankey plot above depicts the taxonomic levels of Acidobacteria found at WREF and is filtered for the individual assemblies.
 
+{{< embed code.qmd#tree6 >}}
+
+The tree above displays the phylogeny of Acidobacteriota that are found at WREF.
+
+{{< embed code.qmd#plot15 >}}
+
+The plot above displays the Acidobacteriota in WREF by class and is colored by order
+
+{{< embed code.qmd#plot16 >}}
+
+The scatterplot above displays the total number of bases samples of Acidobacteria from WREF have. It is organized by class and colored by order.
+
 # Discussion
 
+Acidobacteriota was found across many different environments. They are found across ecosystem subtypes and at each and every NEON site. This includes everything from wetlands to tropical forests to deserts. They were sampled at temperatures between 2 and 28 degrees Celsius. They were found at pHs as high as 8 and as low as 3 displaying their acidophilic behavior. They are reportedly found in environments of even lower pH but the areas sampled do not include those. Acidobacteria also made up the third largest data set amongst the phyla.
+
+The WREF site contained bacteria from a myriad of phyla and it had the fourth largest data set. However, its bin quality was medium for the most part with a much smaller portion of high quality. The soil in the samples was composed of 3/4 organic material and 1/4 minerals. The soil temperature ranged from 13 to 16 degrees celsius and the soil in water pH ranged from about 4 to 5. The samples collected there ranged from areas of about 370 ft in elevation to almost 700 ft.
+
 # Conclusions
+
+The data collected on acidobacteriota displays their affinity for acidic environments to some degree but also goes to show that this phlyum is very versatile and ubiquitous. It is also a very large phylum relatively and is comprised of numerous taxonomic groups. The breadth of data collected on WREF illustrates that it is well developed and likely approachable as a data collection site with many different kinds of microbiota inhabiting it. The wrangling, analyzing, and plotting of this data was laborious work but yielded an interesting peek at large scale data collection and utilization. Through this process, I was able to develop my skills in R and github as well as strengthen my ability to find patterns in data sets. This will enable me to compile my own methods of demonstrating data in the contexts of presentations and the like in the future.
 
 ## Acknowledgements
 
