@@ -487,6 +487,7 @@ ggtree(tree_Acidobacteriota)  %<+%
   geom_point(mapping=aes(color=`soilInWaterpH`)) 
 ```
 ```{r,fig.height=20, fig.width=20}
+#| label: tree6
 NEON_MAGs_metagenomes_chemistry_WREF <- NEON_MAGs_metagenomes_chemistry %>% 
   filter(`Site ID.x` == "WREF") %>% 
   filter(Phylum == "Acidobacteriota")
@@ -502,6 +503,23 @@ ggtree(tree_bac_WREF_MAGs, layout="circular")  %<+%
   theme(legend.title=element_text(size=5), legend.text=element_text(size=5), legend.spacing.y = unit(0.02, "cm"))
       
 ```
+```{r}
+#| label: tree7
+NEON_MAGs_metagenomes_chemistry_WREF <- NEON_MAGs_metagenomes_chemistry %>% 
+  filter(`Site ID.x` == "WREF") 
+
+WREF_MAGs_label <- NEON_MAGs_metagenomes_chemistry_WREF$label
+
+tree_bac_WREF_MAGs <-drop.tip(tree_bac,tree_bac$tip.label[-match(WREF_MAGs_label, tree_bac$tip.label)])
+
+
+ggtree(tree_bac_WREF_MAGs, layout="circular")  %<+%
+  NEON_MAGs_metagenomes_chemistry +
+  geom_point(mapping=aes(color=Phylum)) +
+  theme(legend.title=element_text(size=5), legend.text=element_text(size=5), legend.spacing.y = unit(0.02, "cm"))
+      
+```
+
 ```{r,fig.height=20, fig.width=20}
 NEON_MAGs_metagenomes_chemistry_soilInCaClpH <- NEON_MAGs_metagenomes_chemistry %>% 
   filter(soilInCaClpH < 0) %>% 
@@ -551,3 +569,34 @@ NEON_chemistry_WREF <- NEON_chemistry %>%
   theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1), axis.text.y = element_text(size = 5)) + 
   labs(title = "Soil pH v Soil Temp at WREF", x = "Soil in Water pH", y = "Soil Temp") 
 ```
+
+```{r}
+#| label: plot14
+NEON_chemistry_WREF %>%   
+ggplot(aes(x = `elevation`, y = `genomicsSampleID`, color = `soilTemp`)) +
+  geom_point() +
+  labs(title = "Elevation of Samples at WREF", x = "Elevation", y = "Sample ID") +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1))
+```
+
+```{r}
+#| label: plot15
+Acido_Data %>% 
+  filter(`Site ID`== 'WREF') %>%
+  ggplot(aes(x = fct_rev(fct_infreq(Class)), fill = Order)) +
+  geom_bar() +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1), axis.text.y = element_text(size = 5)) +  
+  labs(title = "Acidobacteria Class Count in WREF", x = "Class", y = "Count") +
+  theme_classic()
+```
+```{r}
+#| label: plot16
+Acido_Data %>% 
+  filter(`Site ID`== 'WREF') %>%
+  ggplot(aes(x = fct_rev(fct_infreq(Class)), y= `Total Number of Bases`, fill = Order)) +
+  geom_point(aes(color= Order)) +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1), axis.text.y = element_text(size = 5)) +  
+  labs(title = "Total Number of Bases in Acido Classes in WREF", x = "Class", y = "Number of Bases") +
+  theme_classic()
+```
+
