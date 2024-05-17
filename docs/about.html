@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto5 - Actinobacteriota and WREF</title>
+<title>quarto5 - Acidobacteriota and WREF</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -133,9 +187,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#neon-data-1" id="toc-neon-data-1" class="nav-link" data-scroll-target="#neon-data-1">NEON Data</a></li>
   <li><a href="#wref-site-data" id="toc-wref-site-data" class="nav-link" data-scroll-target="#wref-site-data">WREF Site Data</a></li>
   <li><a href="#acidobacteriota-data" id="toc-acidobacteriota-data" class="nav-link" data-scroll-target="#acidobacteriota-data">Acidobacteriota Data</a></li>
+  <li><a href="#acidobacteriota-at-wref" id="toc-acidobacteriota-at-wref" class="nav-link" data-scroll-target="#acidobacteriota-at-wref">Acidobacteriota at WREF</a></li>
   </ul></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a>
+  <ul class="collapse">
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="code.embed-preview.html"><i class="bi bi-journal-code"></i>Code</a></li></ul></div></nav>
     </div>
@@ -144,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Actinobacteriota and WREF</h1>
+<h1 class="title">Acidobacteriota and WREF</h1>
 </div>
 
 
@@ -163,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="abstract" class="level1">
 <h1>Abstract</h1>
-<p>Utilizing the coding knowledge and skills learned in Biology 476: Evolutionary Genomics and Bioinformatics, students built a github repository and Quatro website. The website includes graphs and tables created by the students that showcase data from NEON metagenomes. The results are visual representations of data from the WREF collection site in Vancouver, WA as well as data on the bacteria phylum acidobacteriota. RESULTS</p>
+<p>Utilizing the coding knowledge and skills learned in Biology 476: Evolutionary Genomics and Bioinformatics, students built a github repository and Quatro website. The website includes graphs and tables created by the students that showcase data from NEON metagenomes. The results are visual representations of data from the WREF collection site in Vancouver, WA as well as data on the bacteria phylum Acidobacteriota. RESULTS</p>
 </section>
 <section id="motivating-reasons" class="level1">
 <h1>Motivating Reasons</h1>
@@ -177,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="data-collection-site-wref" class="level2">
 <h2 class="anchored" data-anchor-id="data-collection-site-wref">Data Collection Site: WREF</h2>
-<p>The Wind River Experimental Forest is a field site about 40 miles NE of Vancouver, WA in the Gifford Pinchot National Forest. This is in Neon’s Pacific Northwest Domain (D16). The area is populated by douglas firs and western hemlocks of diverse ages. The region’s climate is temperate with an average temperature of 9.2°C and average precipitation of 87.6 in. In the valley of volcanoes, Mt. Rainier and Mt. St.&nbsp;Helens, the soil here is comprised of volcanic ashe, pumice, basalt bedrock, and andesite (leftover from lava flows). Among the animals living in this area are elk, bobcats, cougars, black bears, various birds, and many small mammals. After being used as a seedling nursery for post-wildfire forest rehabilitation for almost a century, the NEON site was established in 2006 and sampling for the project began in 2018.</p>
+<p>The Wind River Experimental Forest is a field site about 40 miles NE of Vancouver, WA in the Gifford Pinchot National Forest (<span class="citation" data-cites="NEON"><span>“Wind <span>River</span> <span>Experimental</span> <span>Forest</span> <span>NEON</span> / <span>WREF</span>”</span> (<a href="#ref-NEON" role="doc-biblioref">n.d.</a>)</span>). This is in Neon’s Pacific Northwest Domain (D16). The area is populated by douglas firs and western hemlocks of diverse ages. The region’s climate is temperate with an average temperature of 9.2°C and average precipitation of 87.6 in. In the valley of volcanoes, Mt. Rainier and Mt. St.&nbsp;Helens, the soil here is comprised of volcanic ashe, pumice, basalt bedrock, and andesite (leftover from lava flows). Among the animals living in this area are elk, bobcats, cougars, black bears, various birds, and many small mammals. After being used as a seedling nursery for post-wildfire forest rehabilitation for almost a century, the NEON site was established in 2006 and sampling for the project began in 2018.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="WREFsitepretty.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
@@ -193,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="bacterial-phylum-acidobacteriota" class="level2">
 <h2 class="anchored" data-anchor-id="bacterial-phylum-acidobacteriota">Bacterial Phylum: Acidobacteriota</h2>
-<p>This phylum of bacteria is gram-negative and are most prevalent in soils (though they are present in a myriad of different mediums) (@Wikipedia). The name “acidobacteriota” comes from their acidophilic– or acid loving– nature. Many species thrive in acidic environments. The majority of them are also aerobic while a minority in anaerobic. The first species of this phylum was characterized in the early 90’s (Acidobacterium capsulatum), however, the phylum itself was not identified until the 2010’s (@huber_editorial_2022. Within this phylum 22 genera and 40 species have been identified.</p>
+<p>This phylum of bacteria is gram-negative and are most prevalent in soils (though they are present in a myriad of different mediums) (<span class="citation" data-cites="Wikipedia"><span>“Acidobacteriota”</span> (<a href="#ref-Wikipedia" role="doc-biblioref">n.d.</a>)</span>). The name “acidobacteriota” comes from their acidophilic– or acid loving– nature. Many species thrive in acidic environments. The majority of them are also aerobic while a minority in anaerobic. The first species of this phylum was characterized in the early 90’s (Acidobacterium capsulatum), however, the phylum itself was not identified until the 2010’s (<span class="citation" data-cites="huber_editorial_2022">Huber et al. (<a href="#ref-huber_editorial_2022" role="doc-biblioref">2022</a>)</span>. Within this phylum 22 genera and 40 species have been identified.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Acidobacterium.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
@@ -219,8 +277,8 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-embed-nb-cell">
 <div id="cell-datatable1" class="cell">
 <div id="datatable1" class="cell-output cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-d3c62521abd80707ee31" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d3c62521abd80707ee31">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["National Grasslands LBJ, Texas, USA","Toolik Field Station, Alaska, USA","Chase Lake Wetlands, North Dakota, USA","Wind River Experimental Forest, Washington, USA","Niwot Ridge, Colorado, USA","Lower Teakettle, Sierra National Forest, California, USA","Caribou Creek Watershed, Alaska, USA","Konza Prairie Bio Station, Kansas, USA","Great Basin, Onaqui, Utah, USA","Guanica State Forest and Biosphere Reserve, Puerto Rico","Yellowstone NP, Wyoming, USA","Healy, Denali National Park, Alaska, USA","Santa Rita Experimental Range, Tucson, Arizona, USA"],[197,149,132,100,88,81,69,69,60,54,50,42,39]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Site<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Site","targets":1},{"name":"n","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-285e516cdfc58b7452f4" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-285e516cdfc58b7452f4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["National Grasslands LBJ, Texas, USA","Toolik Field Station, Alaska, USA","Chase Lake Wetlands, North Dakota, USA","Wind River Experimental Forest, Washington, USA","Niwot Ridge, Colorado, USA","Lower Teakettle, Sierra National Forest, California, USA","Caribou Creek Watershed, Alaska, USA","Konza Prairie Bio Station, Kansas, USA","Great Basin, Onaqui, Utah, USA","Guanica State Forest and Biosphere Reserve, Puerto Rico","Yellowstone NP, Wyoming, USA","Healy, Denali National Park, Alaska, USA","Santa Rita Experimental Range, Tucson, Arizona, USA"],[197,149,132,100,88,81,69,69,60,54,50,42,39]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Site<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Site","targets":1},{"name":"n","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-1" href="code.embed-preview.html#cell-datatable1">Source: Code</a></div>
@@ -233,8 +291,8 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-embed-nb-cell">
 <div id="cell-datatable2" class="cell">
 <div id="datatable2" class="cell-output cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-9589d2f3e28e8a17cdb4" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-9589d2f3e28e8a17cdb4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],["Actinobacteriota","Proteobacteria","Acidobacteriota","Verrucomicrobiota",null,"Chloroflexota","Myxococcota","Bacteroidota","Gemmatimonadota","Methylomirabilota","Planctomycetota","Dormibacterota","Eremiobacterota","Desulfobacterota_B","Desulfobacterota","Patescibacteria","Tectomicrobia","Cyanobacteria","Myxococcota_A","Armatimonadota","Chlamydiota","Eisenbacteria","Firmicutes","Krumholzibacteriota","Nitrospirota"],[418,248,181,57,38,35,29,22,16,16,16,11,11,9,5,5,3,2,2,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Phylum<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Phylum","targets":1},{"name":"n","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-ebe18238acda3a1a0643" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ebe18238acda3a1a0643">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],["Actinobacteriota","Proteobacteria","Acidobacteriota","Verrucomicrobiota",null,"Chloroflexota","Myxococcota","Bacteroidota","Gemmatimonadota","Methylomirabilota","Planctomycetota","Dormibacterota","Eremiobacterota","Desulfobacterota_B","Desulfobacterota","Patescibacteria","Tectomicrobia","Cyanobacteria","Myxococcota_A","Armatimonadota","Chlamydiota","Eisenbacteria","Firmicutes","Krumholzibacteriota","Nitrospirota"],[418,248,181,57,38,35,29,22,16,16,16,11,11,9,5,5,3,2,2,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Phylum<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Phylum","targets":1},{"name":"n","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-2" href="code.embed-preview.html#cell-datatable2">Source: Code</a></div>
@@ -292,6 +350,18 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="acidobacteriota-data" class="level2">
 <h2 class="anchored" data-anchor-id="acidobacteriota-data">Acidobacteriota Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"data/sankey-NEON_MAG_ind_pavian_acido.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe src="data/sankey-NEON_MAG_ind_pavian_acido.txt.html" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+<p>The sankey plot above depicts the taxonomic levels of Acidobacteria and is filtered for the individual assemblies.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"data/sankey-NEON_MAG_co_pavian_acido.txt.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe src="data/sankey-NEON_MAG_co_pavian_acido.txt.html" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+<p>The sankey plot above depicts the taxonomic levels of Acidobacteriota and is filtered for the combined assemblies.</p>
 <div class="quarto-embed-nb-cell">
 <div id="cell-plot5" class="cell">
 <div class="cell-output cell-output-display">
@@ -303,7 +373,70 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-7" href="code.embed-preview.html#cell-plot5">Source: Code</a></div>
-<p>The graph above displays the count of acidobacteria found at each NEON site and is colored by class.</p>
+<p>The graph above displays the count of Acidobacteria found at each NEON site and is organized and colored by class.</p>
+<div class="quarto-embed-nb-cell">
+<div id="cell-plot6" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_files/figure-html/code-plot6-output-1.png" id="plot6" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-8" href="code.embed-preview.html#cell-plot6">Source: Code</a></div>
+<p>The graph above displays the count of Acidobacteria found at each NEON site and is organized and colored by order.</p>
+<div class="quarto-embed-nb-cell">
+<div id="cell-plot7" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_files/figure-html/code-plot7-output-1.png" id="plot7" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-9" href="code.embed-preview.html#cell-plot7">Source: Code</a></div>
+<p>The graph above displays the soil temperature at each NEON site where Acidobacteriota data was collected.</p>
+<div class="quarto-embed-nb-cell">
+<div id="cell-plot8" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_files/figure-html/code-plot8-output-1.png" id="plot8" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-10" href="code.embed-preview.html#cell-plot8">Source: Code</a></div>
+<p>The scatterplot above displays the site temperature by ecosystem subtype. It is filtered to include data only Acidobacteriota data and is colored by class.</p>
+<div class="quarto-embed-nb-cell">
+<div id="cell-plot9" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_files/figure-html/code-plot9-output-1.png" id="plot9" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-11" href="code.embed-preview.html#cell-plot9">Source: Code</a></div>
+<p>The scatterplot above displays the pH of soil samples in CaCl by the ecosystem subtype they were extracted from. It is filtered to include only Acidobacteriota data and is colored by class.</p>
+<div class="quarto-embed-nb-cell">
+<div id="cell-plot10" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_files/figure-html/code-plot10-output-1.png" id="plot10" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-12" href="code.embed-preview.html#cell-plot10">Source: Code</a></div>
+<p>The bin plot above displays the pH of soil samples in water by the class of Actinobacteriota found in them. It is colored by count where darker colors mean higher counts.</p>
+</section>
+<section id="acidobacteriota-at-wref" class="level2">
+<h2 class="anchored" data-anchor-id="acidobacteriota-at-wref">Acidobacteriota at WREF</h2>
 </section>
 </section>
 <section id="discussion" class="level1">
@@ -311,11 +444,26 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>I would like to thank Professor Jefferey Blanchard and my team members, Mary McCloskey and Sukhbir Singh, for their guidance and support in creating this project. I also want to acknowledge NEON for supplying the data used. My labs are written in R. # References</p>
+
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Wikipedia" class="csl-entry" role="listitem">
+<span>“Acidobacteriota.”</span> n.d. <em>Wikipedia</em>. <a href="https://en.wikipedia.org/wiki/Acidobacteriota">https://en.wikipedia.org/wiki/Acidobacteriota</a>.
+</div>
+<div id="ref-huber_editorial_2022" class="csl-entry" role="listitem">
+Huber, Katharina J., Michael Pester, Stephanie A. Eichorst, Acacio A. Navarrete, and Bärbel U. Foesel. 2022. <span>“Editorial: <span>Acidobacteria</span> – <span>Towards</span> <span>Unraveling</span> the <span>Secrets</span> of a <span>Widespread</span>, <span>Though</span> <span>Enigmatic</span>, <span>Phylum</span>.”</span> <em>Frontiers in Microbiology</em> 13 (June). <a href="https://doi.org/10.3389/fmicb.2022.960602">https://doi.org/10.3389/fmicb.2022.960602</a>.
+</div>
+<div id="ref-NEON" class="csl-entry" role="listitem">
+<span>“Wind <span>River</span> <span>Experimental</span> <span>Forest</span> <span>NEON</span> / <span>WREF</span>.”</span> n.d. <em>NEON Science</em>. <a href="https://www.neonscience.org/field-sites/wref">https://www.neonscience.org/field-sites/wref</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

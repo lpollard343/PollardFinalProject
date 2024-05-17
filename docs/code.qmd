@@ -10,6 +10,8 @@ library(knitr)
 library(DT)
 library(plotly)
 library(dplyr)
+library(ggplot2)
+library(zoo)
 ```
 
 ```{r}
@@ -38,18 +40,11 @@ NEON_MAGs <- read_csv("data/GOLD_Study_ID_Gs0161344_NEON.csv") %>%
   separate(`subplot.layer.date`, c("Subplot", "Layer", "Date"), "-") 
 ```
 
+
 ```{r}
 NEON_MAGs_bact_ind <- NEON_MAGs %>% 
   filter(Domain == "Bacteria") %>% 
   filter(`Assembly Type` == "Individual") 
-```
-
-```{r}
-#| label: maths
-NEON_MAGs_bact_ind %>% 
-  ggplot(aes(x = Phylum)) +
-  geom_bar() +
-  coord_flip()
 ```
 
 ```{r}
@@ -58,15 +53,80 @@ NEON_MAGs_Ind <- NEON_MAGs %>%
 ```
 
 ```{r}
+NEON_MAGs_co <- NEON_MAGs %>% 
+  filter(`Assembly Type` == "Combined") 
+```
+
+```{r}
+NEON_MAGs_ind <- NEON_MAGs %>% 
+  filter(`Assembly Type` == "Individual") 
+```
+```{r}
+sankey_data <- NEON_MAGs_co %>% 
+  select(`GTDB-Tk Taxonomy Lineage`) %>% 
+  # NAs are likely Archaea
+  replace_na(list(`GTDB-Tk Taxonomy Lineage` = 'Archaea')) %>% 
+  # Pavian format requires p__ etc
+  separate(`GTDB-Tk Taxonomy Lineage`, c("Domain", "Phylum", "Class", "Order", "Family", "Genus", "Species"), "; ") 
+
+```
+
+```{r}
+sankey_data[] <- t(apply(sankey_data, 1, zoo::na.locf))
+
+# Put the data into a format that can be read by the Sankey App
+
+sankey_data <- sankey_data %>% 
+  unite(col = "classification", c(Domain, Phylum, Class, Order, Family, Genus, Species), sep='; ') %>% 
+  mutate_at("classification", str_replace, "Archaea", "d__Archaea") %>% 
+  mutate_at("classification", str_replace, "Bacteria", "d__Bacteria") %>%  
+  mutate_at("classification", str_replace, "; ", "|p__") %>% 
+  mutate_at("classification", str_replace, "; ", "|c__") %>% 
+  mutate_at("classification", str_replace, "; ", "|o__") %>% 
+  mutate_at("classification", str_replace, "; ", "|f__") %>% 
+  mutate_at("classification", str_replace, "; ", "|g__") %>% 
+  mutate_at("classification", str_replace, "; ", "|s__")  
+
+# Create format for Pavian with counts for each taxonomic level
+sankey_data_s <- sankey_data
+sankey_data_g <- sankey_data
+sankey_data_f <- sankey_data
+sankey_data_o <- sankey_data
+sankey_data_c <- sankey_data
+sankey_data_p <- sankey_data
+sankey_data_d <- sankey_data
+
+sankey_data_g$classification <- sub("\\|s__.*", "", sankey_data_g$classification)  
+sankey_data_f$classification <- sub("\\|g__.*", "", sankey_data_f$classification)  
+sankey_data_o$classification <- sub("\\|f__.*", "", sankey_data_o$classification)  
+sankey_data_c$classification <- sub("\\|o__.*", "", sankey_data_c$classification)  
+sankey_data_p$classification <- sub("\\|c__.*", "", sankey_data_p$classification)  
+sankey_data_d$classification <- sub("\\|p__.*", "", sankey_data_d$classification)  
+
+sankey_data_allTaxa <- bind_rows(sankey_data_s, sankey_data_g, sankey_data_f, sankey_data_o, sankey_data_c, sankey_data_p, sankey_data_d) %>% 
+  mutate(classification = as.factor(classification)) %>% 
+  count(classification) %>% 
+# rename for Pavian format
+  rename(`#SampleID` = `classification`) %>% 
+  rename(`Metaphlan2_Analysis` = `n`) 
+
+# Write file to input to Pavian Sankey
+write_tsv(sankey_data_allTaxa, "data/NEON_MAG_co_pavian.txt")
+```
+
+
+```{r}
 NEON_MAGs_Ind_tax <- NEON_MAGs_Ind %>% 
   separate(`GTDB-Tk Taxonomy Lineage`, c("Domain", "Phylum", "Class", "Order", "Family", "Genus"), "; ", remove = FALSE) 
 ```
+
 ```{r}
 datatable(
   NEON_MAGs_Ind_tax %>% 
     count(Phylum, sort = TRUE)
 )
 ```
+
 ```{r}
 NEON_MAGs_Ind_tax_sample <- NEON_MAGs_Ind_tax %>% 
   # Get rid of the the common string "Soil microbial communities from "
@@ -88,6 +148,7 @@ datatable(
     count(Site, sort = TRUE)
 )
 ```
+
 ```{r}
 #| label: datatable2
 datatable(
@@ -95,6 +156,7 @@ datatable(
     count(Phylum, sort = TRUE)
 )
 ```
+
 ```{r}
 #| label: plot1
 NEON_MAGs_bact_ind %>% 
@@ -105,6 +167,7 @@ NEON_MAGs_bact_ind %>%
   labs(title = "MAG Counts for Each Subplot", x = "Subplot", y = "Count") +
   theme_classic()
 ```
+
 ```{r}
 #| label: plot2
 NEON_MAGs_bact_ind %>% 
@@ -114,6 +177,7 @@ ggplot(aes(x = fct_rev(fct_infreq(Site)), fill = Phylum)) +
    theme(axis.text.x = element_text(size=10), axis.text.y = element_text(size=5)) + 
   labs(title = "MAGs Found at Each Site (By Phylum)", x = "Site", y = "Count") 
 ```
+
 ```{r}
 #| label: plot3
 NEON_MAGs_bact_ind %>% 
@@ -125,6 +189,7 @@ NEON_MAGs_bact_ind %>%
   labs(title = "Phyla with Novel Genera", x = "Phylum", y = "Count of Novel Bacteria") +
   theme_classic()
 ```
+
 ```{r}
 WREF_Data <- NEON_MAGs %>%
   filter(`Site ID` == "WREF")
@@ -154,3 +219,105 @@ ggplot(aes(x = fct_rev(fct_infreq(Site)), fill = Class)) +
    theme(axis.text.x = element_text(size=10), axis.text.y = element_text(size=5)) + 
   labs(title = "Acidobacteria Found at Each Site (By Class)", x = "Site", y = "Count") 
 ```
+
+```{r}
+#| label: plot6
+Acido_Data %>% 
+ggplot(aes(x = fct_rev(fct_infreq(Site)), fill = Order)) +
+  geom_bar(position = position_dodge2(width = 0.9, preserve = "single")) +
+  coord_flip() +
+   theme(axis.text.x = element_text(size=10), axis.text.y = element_text(size=5)) + 
+  labs(title = "Acido. Orders at Each Site", x = "Site", y = "Count") 
+```
+
+```{r}
+NEON_metagenomes <- read_tsv("data/exported_img_data_Gs0161344_NEON.tsv") %>% 
+  rename(`Genome Name` = `Genome Name / Sample Name`) %>% 
+  filter(str_detect(`Genome Name`, 're-annotation', negate = T)) %>% 
+  filter(str_detect(`Genome Name`, 'WREF plot', negate = T)) 
+```
+
+```{r}
+NEON_metagenomes <- NEON_metagenomes %>% 
+  # Get rid of the the common string "Soil microbial communities from "
+  mutate_at("Genome Name", str_replace, "Terrestrial soil microbial communities from ", "") %>% 
+  # Use the first `-` to split the column in two
+  separate(`Genome Name`, c("Site","Sample Name"), " - ") %>% 
+  # Get rid of the the common string "-comp-1"
+  mutate_at("Sample Name", str_replace, "-comp-1", "") %>%
+  # separate the Sample Name into Site ID and plot info
+  separate(`Sample Name`, c("Site ID","subplot.layer.date"), "_", remove = FALSE,) %>% 
+  # separate the plot info into 3 columns
+  separate(`subplot.layer.date`, c("Subplot", "Layer", "Date"), "-") 
+```
+
+```{r}
+NEON_chemistry <- read_tsv("data/neon_plot_soilChem1_metadata.tsv") %>% 
+  # remove -COMP from genomicsSampleID
+  mutate_at("genomicsSampleID", str_replace, "-COMP", "") 
+```
+
+```{r}
+#| label: plot7
+NEON_MAGs %>%
+  left_join(NEON_metagenomes, by = "Site ID") %>%
+  left_join(NEON_chemistry, by = c("Site ID" = "siteID")) %>%
+  filter(Phylum == "Acidobacteriota") %>%
+  ggplot(aes(x = fct_infreq(`Site ID`), y = `soilTemp`)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1)) +
+  labs(title = "Soil Temp by Site", x = "Site ID", y = "Soil Temp")
+```
+
+```{r}
+#| label: plot8
+NEON_MAGs %>%
+  left_join(NEON_metagenomes, by = "Sample Name") %>%
+  left_join(NEON_chemistry, by = c("Sample Name" = "genomicsSampleID")) %>%
+    filter(Phylum == "Acidobacteriota") %>%
+  ggplot(aes(x = fct_infreq(`Ecosystem Subtype`), y = soilTemp)) +
+  geom_point(aes(color=Class)) +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1)) +
+  labs(title = "Soil Temp by Ecosystem Subtype", x = "Ecosystem Subtype", y = "Soil Temp")
+```
+
+```{r}
+#| label: plot9
+NEON_MAGs %>%
+  left_join(NEON_metagenomes, by = "Sample Name") %>%
+  left_join(NEON_chemistry, by = c("Sample Name" = "genomicsSampleID")) %>%
+    filter(Phylum == "Acidobacteriota") %>%
+  ggplot(aes(x = fct_infreq(`Ecosystem Subtype`), y = soilInCaClpH)) +
+  geom_point(aes(color=Class), size = 2) +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1)) +
+  labs(title = "Soil in CaCL pH by NLCD Class", x = "Ecosystem Subtype", y = "Soil in CaCl pH") +
+  theme(legend.title = element_text(size=4), legend.text=element_text(size=4))
+```
+
+```{r}
+#| label: plot10
+NEON_MAGs %>%
+  left_join(NEON_metagenomes, by = "Sample Name") %>%
+  left_join(NEON_chemistry, by = c("Sample Name" = "genomicsSampleID")) %>%
+    filter(Phylum == "Acidobacteriota") %>%
+  ggplot(aes(x = fct_infreq(Class), y = soilInWaterpH)) +
+  geom_bin_2d() +
+  theme(axis.text.x = element_text(angle=90, vjust=1, hjust=1)) +
+  labs(title = "Class v Soil pH in Water", x = "Class", y = "Soil pH in Water") +
+  theme(legend.title = element_text(size=4), legend.text=element_text(size=4))
+```
+
+```{r}
+NEON_MAGs %>%
+  left_join(NEON_metagenomes, by = "Sample Name") %>%
+  left_join(NEON_chemistry, by = c("Sample Name" = "genomicsSampleID")) %>%
+    filter(Phylum == "Acidobacteriota") %>%
+  ggplot(aes(x = soilTemp, y = elevation)) +
+  geom_point(aes(color= siteID), size = 2) +
+  theme(axis.text.x = element_text(angle=90, vjust=1, hjust=1)) +
+  labs(title = "Soil Temp v Elevation (By Site)", x = "Soil Temp", y = "Elevation") +
+  theme(legend.title = element_text(size=4), legend.text=element_text(size=4))
+```
+
+
+

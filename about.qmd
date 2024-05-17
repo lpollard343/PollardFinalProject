@@ -1,5 +1,5 @@
 ---
-title: "Actinobacteriota and WREF"
+title: "Acidobacteriota and WREF"
 editor: visual
 output:
   html_document:
@@ -8,11 +8,12 @@ output:
     toc_depth: 4
     theme: "minty"
     highlight: espresso
+bibliography: references_z.bib
 ---
 
 # Abstract
 
-Utilizing the coding knowledge and skills learned in Biology 476: Evolutionary Genomics and Bioinformatics, students built a github repository and Quatro website. The website includes graphs and tables created by the students that showcase data from NEON metagenomes. The results are visual representations of data from the WREF collection site in Vancouver, WA as well as data on the bacteria phylum acidobacteriota. RESULTS
+Utilizing the coding knowledge and skills learned in Biology 476: Evolutionary Genomics and Bioinformatics, students built a github repository and Quatro website. The website includes graphs and tables created by the students that showcase data from NEON metagenomes. The results are visual representations of data from the WREF collection site in Vancouver, WA as well as data on the bacteria phylum Acidobacteriota. RESULTS
 
 # Motivating Reasons
 
@@ -26,7 +27,7 @@ The National Ecological Observatory Network (NEON) is a collective working towar
 
 ## Data Collection Site: WREF
 
-The Wind River Experimental Forest is a field site about 40 miles NE of Vancouver, WA in the Gifford Pinchot National Forest. This is in Neon's Pacific Northwest Domain (D16). The area is populated by douglas firs and western hemlocks of diverse ages. The region's climate is temperate with an average temperature of 9.2°C and average precipitation of 87.6 in. In the valley of volcanoes, Mt. Rainier and Mt. St. Helens, the soil here is comprised of volcanic ashe, pumice, basalt bedrock, and andesite (leftover from lava flows). Among the animals living in this area are elk, bobcats, cougars, black bears, various birds, and many small mammals. After being used as a seedling nursery for post-wildfire forest rehabilitation for almost a century, the NEON site was established in 2006 and sampling for the project began in 2018.
+The Wind River Experimental Forest is a field site about 40 miles NE of Vancouver, WA in the Gifford Pinchot National Forest (@NEON). This is in Neon's Pacific Northwest Domain (D16). The area is populated by douglas firs and western hemlocks of diverse ages. The region's climate is temperate with an average temperature of 9.2°C and average precipitation of 87.6 in. In the valley of volcanoes, Mt. Rainier and Mt. St. Helens, the soil here is comprised of volcanic ashe, pumice, basalt bedrock, and andesite (leftover from lava flows). Among the animals living in this area are elk, bobcats, cougars, black bears, various birds, and many small mammals. After being used as a seedling nursery for post-wildfire forest rehabilitation for almost a century, the NEON site was established in 2006 and sampling for the project began in 2018.
 
 ![A beautiful view of a lake in the WREF site](WREFsitepretty.jpeg){fig-align="center"}
 
@@ -34,7 +35,7 @@ The Wind River Experimental Forest is a field site about 40 miles NE of Vancouve
 
 ## Bacterial Phylum: Acidobacteriota
 
-This phylum of bacteria is gram-negative and are most prevalent in soils (though they are present in a myriad of different mediums) (\@Wikipedia). The name "acidobacteriota" comes from their acidophilic– or acid loving– nature. Many species thrive in acidic environments. The majority of them are also aerobic while a minority in anaerobic. The first species of this phylum was characterized in the early 90's (Acidobacterium capsulatum), however, the phylum itself was not identified until the 2010's (\@huber_editorial_2022. Within this phylum 22 genera and 40 species have been identified.
+This phylum of bacteria is gram-negative and are most prevalent in soils (though they are present in a myriad of different mediums) (@Wikipedia). The name "acidobacteriota" comes from their acidophilic– or acid loving– nature. Many species thrive in acidic environments. The majority of them are also aerobic while a minority in anaerobic. The first species of this phylum was characterized in the early 90's (Acidobacterium capsulatum), however, the phylum itself was not identified until the 2010's (@huber_editorial_2022. Within this phylum 22 genera and 40 species have been identified.
 
 ![Acidobacterium cf. capsulatum](Acidobacterium.jpg){fig-align="center"}
 
@@ -74,10 +75,48 @@ The graph above displays the number of MAGs in each phylum at WREF and is colore
 
 ## Acidobacteriota Data
 
+```{r}
+knitr::include_url("data/sankey-NEON_MAG_ind_pavian_acido.txt.html")
+```
+
+The sankey plot above depicts the taxonomic levels of Acidobacteria and is filtered for the individual assemblies.
+
+```{r}
+knitr::include_url("data/sankey-NEON_MAG_co_pavian_acido.txt.html")
+```
+
+The sankey plot above depicts the taxonomic levels of Acidobacteriota and is filtered for the combined assemblies.
+
 {{< embed code.qmd#plot5 >}}
 
-The graph above displays the count of acidobacteria found at each NEON site and is colored by class.
+The graph above displays the count of Acidobacteria found at each NEON site and is organized and colored by class.
+
+{{< embed code.qmd#plot6 >}}
+
+The graph above displays the count of Acidobacteria found at each NEON site and is organized and colored by order.
+
+{{< embed code.qmd#plot7 >}}
+
+The graph above displays the soil temperature at each NEON site where Acidobacteriota data was collected.
+
+{{< embed code.qmd#plot8 >}}
+
+The scatterplot above displays the site temperature by ecosystem subtype. It is filtered to include data only Acidobacteriota data and is colored by class.
+
+{{< embed code.qmd#plot9 >}}
+
+The scatterplot above displays the pH of soil samples in CaCl by the ecosystem subtype they were extracted from. It is filtered to include only Acidobacteriota data and is colored by class.
+
+{{< embed code.qmd#plot10 >}}
+
+The bin plot above displays the pH of soil samples in water by the class of Actinobacteriota found in them. It is colored by count where darker colors mean higher counts.
+
+## Acidobacteriota at WREF
 
 # Discussion
 
 # Conclusions
+
+## Acknowledgements
+
+I would like to thank Professor Jefferey Blanchard and my team members, Mary McCloskey and Sukhbir Singh, for their guidance and support in creating this project. I also want to acknowledge NEON for supplying the data used. My labs are written in R. \# References
