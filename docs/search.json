@@ -103,5 +103,12 @@
     "title": "Acidobacteriota and WREF",
     "section": "Acidobacteriota at WREF",
     "text": "Acidobacteriota at WREF\n\nknitr::include_url(\"data/sankey-NEON_MAG_ind_pavian_WREF.txt.html\")\n\n\n\nThe sankey plot above depicts the taxonomic levels of Acidobacteria found at WREF and is filtered for the individual assemblies.\n\n\n\n\n\n\n\n\n\n\nSource: Code\nThe tree above displays the phylogeny of Acidobacteriota that are found at WREF.\n\n\n\n\n\n\n\n\n\n\nSource: Code\nThe plot above displays the Acidobacteriota in WREF by class and is colored by order\n\n\n\n\n\n\n\n\n\n\nSource: Code\nThe scatterplot above displays the total number of bases samples of Acidobacteria from WREF have. It is organized by class and colored by order."
+  },
+  {
+    "objectID": "about.html#acknowledgments",
+    "href": "about.html#acknowledgments",
+    "title": "Acidobacteriota and WREF",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\nI would like to thank Professor Jeffrey Blanchard and my team members, Mary McCloskey and Sukhbir Singh, for their guidance and support in creating this project. I also want to acknowledge NEON for supplying the data used. My labs are written in R and use Quatro and RShiny."
   }
 ]
