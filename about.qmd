@@ -38,55 +38,8 @@ This phylum of bacteria is gram-negative and are most prevalent in soils (though
 
 # Results
 
-```{r}
-library(tidyverse)
-library(knitr)
-library(DT)
-library(plotly)
-```
+{{< embed code.qmd#maths >}}
 
-```{r}
-NEON_MAGs <- read_csv("data1/data/NEON/GOLD_Study_ID_Gs0161344_NEON.csv")
-```
-
-```{r}
-NEON_MAGs_Ind <- NEON_MAGs %>% 
-  filter(`Genome Name` != "NEON combined assembly")
-```
-
-```{r}
-datatable(
-  NEON_MAGs_Ind %>% 
-    filter(`Bin Quality` == "HQ")
-)
-```
-
-```{r}
-NEON_MAGs <- read_csv("data1/data/NEON/GOLD_Study_ID_Gs0161344_NEON.csv") %>% 
-  select(-c(`GOLD Study ID`, `Bin Methods`, `Created By`, `Date Added`)) %>% 
-  mutate("Assembly Type" = case_when(`Genome Name` == "NEON combined assembly" ~ `Genome Name`,
-                            TRUE ~ "Individual")) %>% 
-  mutate_at("Assembly Type", str_replace, "NEON combined assembly", "Combined") %>% 
-  separate(`GTDB-Tk Taxonomy Lineage`, c("Domain", "Phylum", "Class", "Order", "Family", "Genus"), "; ", remove = FALSE) %>% 
-  mutate_at("Genome Name", str_replace, "Terrestrial soil microbial communities from ", "") %>% 
-  separate(`Genome Name`, c("Site","Sample Name"), " - ") %>% 
-  mutate_at("Sample Name", str_replace, "-comp-1", "") %>%
-  separate(`Sample Name`, c("Site ID","subplot.layer.date"), "_", remove = FALSE,) %>% 
-  separate(`subplot.layer.date`, c("Subplot", "Layer", "Date"), "-") 
-```
-
-```{r}
-NEON_MAGs_bact_ind <- NEON_MAGs %>% 
-  filter(Domain == "Bacteria") %>% 
-  filter(`Assembly Type` == "Individual") 
-```
-
-```{r}
-NEON_MAGs_bact_ind %>% 
-ggplot(aes(x = Phylum)) +
-  geom_bar() +
-  coord_flip()
-```
 
 ## WREF Site
 
@@ -95,3 +48,6 @@ ggplot(aes(x = Phylum)) +
 # Discussion
 
 # Conclusions
+
+
+

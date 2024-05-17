@@ -1,8 +1,28 @@
 {
   "index.qmd": {
-    "index.html": "4dfc6e30"
+    "index.html": "4dfc6e30",
+    "index.embed.ipynb": "a38d0f6d"
   },
   "about.qmd": {
     "about.html": "11d1d92b"
+  },
+  "libraries.qmd": {
+    "libraries.html": "4fcd4982"
+  },
+  "index.embed.ipynb": {
+    "index.embed-preview.html": "947aeefa"
+  },
+  ".quarto/embed/index.embed.ipynb": {
+    "index.embed-preview.html": "df346f78"
+  },
+  "code.qmd": {
+    "code.html": "d48422b3",
+    "code.embed.ipynb": "0f54c58b"
+  },
+  "code.embed.ipynb": {
+    "code.embed-preview.html": "1565dcc6"
+  },
+  ".quarto/embed/code.embed.ipynb": {
+    "code.embed-preview.html": "3159e058"
   }
 }

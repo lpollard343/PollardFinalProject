@@ -1,28 +1,150 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.4.550">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>quarto5 - Actinobacteriota and WREF</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
+    <title>quarto5</title>
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+        }
+      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+    </style>
+
+    <style>
+      body.hypothesis-enabled #quarto-embed-header {
+        padding-right: 36px;
+      }
+
+      #quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+
+      #quarto-embed-header h6 {
+        font-size: 1.1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 400;
+      }
+
+      #quarto-embed-header a.quarto-back-link,
+      #quarto-embed-header a.quarto-download-embed {
+        font-size: 0.8em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      .quarto-back-container {
+        padding-left: 0.5em;
+        display: flex;
+      }
+
+      .headroom {
+          will-change: transform;
+          transition: transform 200ms linear;
+      }
+
+      .headroom--pinned {
+          transform: translateY(0%);
+      }
+
+      .headroom--unpinned {
+          transform: translateY(-100%);
+      }      
+    </style>
+
+    <script>
+    window.document.addEventListener("DOMContentLoaded", function () {
+
+      var header = window.document.querySelector("#quarto-embed-header");
+      const titleBannerEl = window.document.querySelector("body > #title-block-header");
+      if (titleBannerEl) {
+        titleBannerEl.style.paddingTop = header.clientHeight + "px";
+      }
+      const contentEl = window.document.getElementById('quarto-content');
+      for (const child of contentEl.children) {
+        child.style.paddingTop = header.clientHeight + "px";
+        child.style.marginTop = "1em";
+      }
+
+      // Use the article root if the `back` call doesn't work. This isn't perfect
+      // but should typically work
+      window.quartoBackToArticle = () => {
+        var currentUrl = window.location.href;
+        window.history.back();
+        setTimeout(() => {
+            // if location was not changed in 100 ms, then there is no history back
+            if(currentUrl === window.location.href){              
+                // redirect to site root
+                window.location.href = '/';
+            }
+        }, 100);
+      }
+
+      const headroom = new window.Headroom(header, {
+        tolerance: 5,
+        onPin: function () {
+        },
+        onUnpin: function () {
+        },
+      });
+      headroom.init();
+    });
+    </script>
+
+    
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -39,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+     <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -65,15 +187,20 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
+}</script>  
+        <link rel="stylesheet" href="styles.css">
+      </head>
 
+  <body class="floating nav-fixed quarto-notebook">
+    <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
+      
+      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link"><i class="bi bi-caret-left"></i> Back to Article</a>
+      <h6><i class="bi bi-journal-code"></i> quarto5</h6>
 
-<link rel="stylesheet" href="styles.css">
-</head>
+            <a href="./index.qmd" class="btn btn-primary quarto-download-embed" download="index.qmd">Download Source</a>
+          </div>
 
-<body class="nav-fixed">
-
-<div id="quarto-search-results"></div>
+     <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
@@ -93,12 +220,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">Project</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./code.html"> 
-<span class="menu-text">Code</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -110,37 +233,23 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#motivating-reasons" id="toc-motivating-reasons" class="nav-link" data-scroll-target="#motivating-reasons">Motivating Reasons</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#data-collection-site-wref" id="toc-data-collection-site-wref" class="nav-link" data-scroll-target="#data-collection-site-wref">Data Collection Site: WREF</a></li>
-  <li><a href="#bacterial-phylum-acidobacteriota" id="toc-bacterial-phylum-acidobacteriota" class="nav-link" data-scroll-target="#bacterial-phylum-acidobacteriota">Bacterial Phylum: Acidobacteriota</a></li>
-  </ul></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
-  <ul class="collapse">
-  <li><a href="#libraries-and-wrangling" id="toc-libraries-and-wrangling" class="nav-link" data-scroll-target="#libraries-and-wrangling">Libraries and Wrangling</a></li>
-  <li><a href="#wref-site" id="toc-wref-site" class="nav-link" data-scroll-target="#wref-site">WREF Site</a></li>
-  <li><a href="#acidobacteriota" id="toc-acidobacteriota" class="nav-link" data-scroll-target="#acidobacteriota">Acidobacteriota</a></li>
-  </ul></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  <li><a href="#quarto5" id="toc-quarto5" class="nav-link active" data-scroll-target="#quarto5">quarto5</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="code.embed-preview.html"><i class="bi bi-journal-code"></i>Code</a></li></ul></div></nav>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Actinobacteriota and WREF</h1>
+<h1 class="title">quarto5</h1>
 </div>
 
 
@@ -154,83 +263,109 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header>     <div id="d278eefc-c671-4aa9-aa55-d8ba9f75f720" class="cell markdown">
+<section id="quarto5" class="level1">
+<h1>quarto5</h1>
+<p>This is a Quarto website.</p>
+<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+</section>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="ada8b00d-b21f-4e39-92d5-5b4404481c2b" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>library(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
+Attaching package: 'plotly'
 
+The following object is masked from 'package:ggplot2':
 
-<section id="abstract" class="level1">
-<h1>Abstract</h1>
-<p>Utilizing the coding knowledge and skills learned in Biology 476: Evolutionary Genomics and Bioinformatics, students built a github repository and Quatro website. The website includes graphs and tables created by the students that showcase data from NEON metagenomes. The results are visual representations of data from the WREF collection site in Vancouver, WA as well as data on the bacteria phylum acidobacteriota. RESULTS</p>
-</section>
-<section id="motivating-reasons" class="level1">
-<h1>Motivating Reasons</h1>
-<p>The motivating reasons behind this project were to further develop my skills in R Posit Cloud, to practice integration and manipulation of data, and to learn about acidobacteriota and the WREF site. I took Biology 478: Human Genome Analysis in the fall of 2023 and this gave me some foundational skills for working with data in R. Through my engagement with this project, I have learned more about data wrangling, ggplot, ggtrees, quatro website building, and github repositories. These will be very useful to my future career in biological research as I will be able to analyze and present data that I have collected myself for presentations and papers. The topic of this project, acidobacteriota and WREF, have given me insight into a particular bacterial phylum and its evolutionary lineage. It also shed light onto how data collection sites are chosen, managed, and utilized.</p>
-</section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<section id="data-collection-site-wref" class="level2">
-<h2 class="anchored" data-anchor-id="data-collection-site-wref">Data Collection Site: WREF</h2>
-<p>The Wind River Experimental Forest is a field site about 40 miles NE of Vancouver, WA in the Gifford Pinchot National Forest. This is in Neon’s Pacific Northwest Domain (D16). The area is populated by douglas firs and western hemlocks of diverse ages. The region’s climate is temperate with an average temperature of 9.2°C and average precipitation of 87.6 in. In the valley of volcanoes, Mt. Rainier and Mt. St.&nbsp;Helens, the soil here is comprised of volcanic ashe, pumice, basalt bedrock, and andesite (leftover from lava flows). Among the animals living in this area are elk, bobcats, cougars, black bears, various birds, and many small mammals. After being used as a seedling nursery for post-wildfire forest rehabilitation for almost a century, the NEON site was established in 2006 and sampling for the project began in 2018.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="WREFsitepretty.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>A beautiful view of a lake in the WREF site</figcaption>
-</figure>
+    last_plot
+
+The following object is masked from 'package:stats':
+
+    filter
+
+The following object is masked from 'package:graphics':
+
+    layout</code></pre>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="WREFmap.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Map of the WREF site</figcaption>
-</figure>
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="4e423b95-0b29-4a08-ad43-9d379f9d5cbb" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs <span class="op">&lt;-</span> read_csv(<span class="st">"data/GOLD_Study_ID_Gs0161344_NEON.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1754 Columns: 19
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (8): Bin ID, Genome Name, Bin Quality, Bin Lineage, GTDB-Tk Taxonomy L...
+dbl  (10): IMG Genome ID, Bin Completeness, Bin Contamination, Total Number ...
+date  (1): Date Added
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-</section>
-<section id="bacterial-phylum-acidobacteriota" class="level2">
-<h2 class="anchored" data-anchor-id="bacterial-phylum-acidobacteriota">Bacterial Phylum: Acidobacteriota</h2>
-<p>This phylum of bacteria is gram-negative and are most prevalent in soils (though they are present in a myriad of different mediums) (@Wikipedia). The name “acidobacteriota” comes from their acidophilic– or acid loving– nature. Many species thrive in acidic environments. The majority of them are also aerobic while a minority in anaerobic. The first species of this phylum was characterized in the early 90’s (Acidobacterium capsulatum), however, the phylum itself was not identified until the 2010’s (@huber_editorial_2022. Within this phylum 22 genera and 40 species have been identified.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Acidobacterium.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-<figcaption>Acidobacterium cf.&nbsp;capsulatum</figcaption>
-</figure>
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="64734aea-a547-48bd-86a2-c60992c48791" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs_Ind <span class="op">&lt;-</span> NEON_MAGs <span class="op">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(`Genome Name` <span class="op">!=</span> <span class="st">"NEON combined assembly"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="913c28b4-6a91-4016-b195-a17ae49b2d96" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs <span class="op">&lt;-</span> read_csv(<span class="st">"data/GOLD_Study_ID_Gs0161344_NEON.csv"</span>) <span class="op">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  select(<span class="op">-</span>c(`GOLD Study ID`, `Bin Methods`, `Created By`, `Date Added`)) <span class="op">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="st">"Assembly Type"</span> <span class="op">=</span> case_when(`Genome Name` <span class="op">==</span> <span class="st">"NEON combined assembly"</span> <span class="op">~</span> `Genome Name`,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                            TRUE <span class="op">~</span> <span class="st">"Individual"</span>)) <span class="op">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  mutate_at(<span class="st">"Assembly Type"</span>, str_replace, <span class="st">"NEON combined assembly"</span>, <span class="st">"Combined"</span>) <span class="op">%&gt;%</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  separate(`GTDB<span class="op">-</span>Tk Taxonomy Lineage`, c(<span class="st">"Domain"</span>, <span class="st">"Phylum"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>), <span class="st">"; "</span>, remove <span class="op">=</span> FALSE) <span class="op">%&gt;%</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  mutate_at(<span class="st">"Genome Name"</span>, str_replace, <span class="st">"Terrestrial soil microbial communities from "</span>, <span class="st">""</span>) <span class="op">%&gt;%</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  separate(`Genome Name`, c(<span class="st">"Site"</span>,<span class="st">"Sample Name"</span>), <span class="st">" - "</span>) <span class="op">%&gt;%</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  mutate_at(<span class="st">"Sample Name"</span>, str_replace, <span class="st">"-comp-1"</span>, <span class="st">""</span>) <span class="op">%&gt;%</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  separate(`Sample Name`, c(<span class="st">"Site ID"</span>,<span class="st">"subplot.layer.date"</span>), <span class="st">"_"</span>, remove <span class="op">=</span> FALSE,) <span class="op">%&gt;%</span> </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  separate(`subplot.layer.date`, c(<span class="st">"Subplot"</span>, <span class="st">"Layer"</span>, <span class="st">"Date"</span>), <span class="st">"-"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1754 Columns: 19
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (8): Bin ID, Genome Name, Bin Quality, Bin Lineage, GTDB-Tk Taxonomy L...
+dbl  (10): IMG Genome ID, Bin Completeness, Bin Contamination, Total Number ...
+date  (1): Date Added
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.Warning: Expected 6 pieces. Additional pieces discarded in 29 rows [54, 232, 267, 328,
+389, 400, 439, 473, 529, 531, 538, 669, 936, 1016, 1118, 1240, 1323, 1330,
+1477, 1484, ...].Warning: Expected 6 pieces. Missing pieces filled with `NA` in 429 rows [46, 50, 53, 55,
+56, 57, 61, 62, 65, 66, 67, 71, 76, 78, 79, 81, 89, 92, 96, 99, ...].Warning: Expected 2 pieces. Missing pieces filled with `NA` in 624 rows [4, 7, 8, 236,
+237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252,
+...].</code></pre>
 </div>
-</section>
-</section>
-<section id="methods" class="level1">
-<h1>Methods</h1>
-</section>
-<section id="results" class="level1">
-<h1>Results</h1>
-<div class="quarto-embed-nb-cell">
-<div id="cell-maths" class="cell">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="643c0419-815f-419e-8679-844014f89124" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs_bact_ind <span class="op">&lt;-</span> NEON_MAGs <span class="op">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(Domain <span class="op">==</span> <span class="st">"Bacteria"</span>) <span class="op">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(`Assembly Type` <span class="op">==</span> <span class="st">"Individual"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-maths" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>NEON_MAGs_bact_ind <span class="op">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  ggplot(aes(x <span class="op">=</span> Phylum)) <span class="op">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  geom_bar() <span class="op">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  coord_flip()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
+<div class="">
 <figure class="figure">
-<p><img src="about_files/figure-html/code-maths-output-1.png" id="maths" class="img-fluid figure-img"></p>
+<p class=""><img src="index.embed_files/figure-html/maths-output-1.png" id="maths" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-</div>
-<a class="quarto-notebook-link" id="nblink-1" href="code.embed-preview.html#cell-maths">Source: Code</a></div>
-<section id="libraries-and-wrangling" class="level3">
-<h3 class="anchored" data-anchor-id="libraries-and-wrangling">Libraries and Wrangling</h3>
-</section>
-<section id="wref-site" class="level2">
-<h2 class="anchored" data-anchor-id="wref-site">WREF Site</h2>
-</section>
-<section id="acidobacteriota" class="level2">
-<h2 class="anchored" data-anchor-id="acidobacteriota">Acidobacteriota</h2>
-</section>
-</section>
-<section id="discussion" class="level1">
-<h1>Discussion</h1>
-</section>
-<section id="conclusions" class="level1">
-<h1>Conclusions</h1>
+</div></div>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+     </main> <!-- /main -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -616,10 +751,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-</div> <!-- /content -->
-
-
-
-
+</script>  </div> <!-- /content --> 
+  
 </body></html>
