@@ -1,6 +1,7 @@
 ---
 title: "Code"
 editor: visual
+always_allow_html: yes
 ---
 
 ```{r}
@@ -16,8 +17,11 @@ NEON_MAGs <- read_csv("data/GOLD_Study_ID_Gs0161344_NEON.csv")
 ```
 
 ```{r}
-NEON_MAGs_Ind <- NEON_MAGs %>% 
-  filter(`Genome Name` != "NEON combined assembly")
+head(NEON_MAGs)
+```
+
+```{r}
+str(NEON_MAGs)
 ```
 
 ```{r}
@@ -46,4 +50,107 @@ NEON_MAGs_bact_ind %>%
   ggplot(aes(x = Phylum)) +
   geom_bar() +
   coord_flip()
+```
+
+```{r}
+NEON_MAGs_Ind <- NEON_MAGs %>% 
+  filter(`Site` != "NEON combined assembly") 
+```
+
+```{r}
+NEON_MAGs_Ind_tax <- NEON_MAGs_Ind %>% 
+  separate(`GTDB-Tk Taxonomy Lineage`, c("Domain", "Phylum", "Class", "Order", "Family", "Genus"), "; ", remove = FALSE) 
+```
+```{r}
+datatable(
+  NEON_MAGs_Ind_tax %>% 
+    count(Phylum, sort = TRUE)
+)
+```
+```{r}
+NEON_MAGs_Ind_tax_sample <- NEON_MAGs_Ind_tax %>% 
+  # Get rid of the the common string "Soil microbial communities from "
+  mutate_at("Site", str_replace, "Terrestrial soil microbial communities from ", "") %>% 
+  # Use the first `-` to split the column in two
+  separate(`Site`, c("Site","Sample Name"), " - ") %>% 
+  # Get rid of the the common string "S-comp-1"
+  mutate_at("Sample Name", str_replace, "-comp-1", "") %>%
+  # separate the Sample Name into Site ID and plot info
+  separate(`Sample Name`, c("Site ID","subplot.layer.date"), "_", remove = FALSE,) %>% 
+  # separate the plot info into 3 columns
+  separate(`subplot.layer.date`, c("Subplot", "Layer", "Date"), "-") 
+```
+
+```{r}
+#| label: datatable1
+datatable(
+  NEON_MAGs_Ind_tax_sample %>% 
+    count(Site, sort = TRUE)
+)
+```
+```{r}
+#| label: datatable2
+datatable(
+  NEON_MAGs_Ind_tax %>% 
+    count(Phylum, sort = TRUE)
+)
+```
+```{r}
+#| label: plot1
+NEON_MAGs_bact_ind %>% 
+  ggplot(aes(x = fct_rev(fct_infreq(Subplot)), fill = Site)) +
+  geom_bar() +
+  coord_flip() +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1), axis.text.y = element_text(size = 5)) +  
+  labs(title = "MAG Counts for Each Subplot", x = "Subplot", y = "Count") +
+  theme_classic()
+```
+```{r}
+#| label: plot2
+NEON_MAGs_bact_ind %>% 
+ggplot(aes(x = fct_rev(fct_infreq(Site)), fill = Phylum)) +
+  geom_bar() +
+    coord_flip() +
+   theme(axis.text.x = element_text(size=10), axis.text.y = element_text(size=5)) + 
+  labs(title = "MAGs Found at Each Site (By Phylum)", x = "Site", y = "Count") 
+```
+```{r}
+#| label: plot3
+NEON_MAGs_bact_ind %>% 
+   filter(is.na(Genus)) %>%
+  ggplot(aes(x =fct_infreq(Phylum))) +
+  geom_bar() +
+  coord_flip() +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1), axis.text.y = element_text(size = 5)) + 
+  labs(title = "Phyla with Novel Genera", x = "Phylum", y = "Count of Novel Bacteria") +
+  theme_classic()
+```
+```{r}
+WREF_Data <- NEON_MAGs %>%
+  filter(`Site ID` == "WREF")
+```
+
+```{r}
+#| label: plot4
+WREF_Data %>% 
+ggplot(aes(x = fct_infreq(Phylum), fill = Class)) +
+  geom_bar() +
+  coord_flip() +
+  theme(axis.text.x = element_text(angle=45, vjust=1, hjust=1), axis.text.y = element_text(size = 3))+
+  labs(title = "Number of MAGs Per Phylum at WREF", x = "Phylum", y = "MAGs")
+```
+
+```{r}
+Acido_Data <- NEON_MAGs %>% 
+  filter(Phylum == "Acidobacteriota")
+```
+
+```{r}
+#| label: plot5
+Acido_Data %>% 
+ggplot(aes(x = fct_rev(fct_infreq(Site)), fill = Class)) +
+  geom_bar(position = position_dodge2(width = 0.9, preserve = "single")) +
+  coord_flip() +
+   theme(axis.text.x = element_text(size=10), axis.text.y = element_text(size=5)) + 
+  labs(title = "Acidobacteria Found at Each Site (By Class)", x = "Site", y = "Count") 
 ```

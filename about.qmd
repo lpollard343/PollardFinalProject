@@ -20,6 +20,10 @@ The motivating reasons behind this project were to further develop my skills in 
 
 # Introduction
 
+## NEON Data
+
+The National Ecological Observatory Network (NEON) is a collective working towards better understanding ecosystems in the United States and how they are changing. It is comprised of data collected from across the country including freshwater and terrestrial ecosystems ranging from steams and rivers to deserts. Through collaboration between a myriad of scientific communities it has collected information with the aim of optimizing technology and construction to maintaining ecosystems.
+
 ## Data Collection Site: WREF
 
 The Wind River Experimental Forest is a field site about 40 miles NE of Vancouver, WA in the Gifford Pinchot National Forest. This is in Neon's Pacific Northwest Domain (D16). The area is populated by douglas firs and western hemlocks of diverse ages. The region's climate is temperate with an average temperature of 9.2°C and average precipitation of 87.6 in. In the valley of volcanoes, Mt. Rainier and Mt. St. Helens, the soil here is comprised of volcanic ashe, pumice, basalt bedrock, and andesite (leftover from lava flows). Among the animals living in this area are elk, bobcats, cougars, black bears, various birds, and many small mammals. After being used as a seedling nursery for post-wildfire forest rehabilitation for almost a century, the NEON site was established in 2006 and sampling for the project began in 2018.
@@ -36,18 +40,44 @@ This phylum of bacteria is gram-negative and are most prevalent in soils (though
 
 # Methods
 
+We used Rstudio Posit-Cloud to wrangle, organize, analyze and graphically present the NEON MAGs data for the WREF site and the phylum Actinobacteria. In a Quatro Markdown file we inserted our code chunks that contained data which we had filtered, mutated, joined, and separated just to name a few functions utilized. To present this data we used tools like ggplot, facet wrap, geom bar, geom point, and ggtrees to create elaborate and well-formatted graphs with appropriate titles and keys.
+
 # Results
 
-{{< embed code.qmd#maths >}}
+## NEON Data
 
+![Datatable of MAG counts at each NEON site](Screenshot%202024-05-16%20at%2010.59.56%20PM.png)
 
-## WREF Site
+{{< embed code.qmd#datatable1 >}}
 
-## Acidobacteriota
+![Data table of MAG counts per Phylum](DT%20of%20phylum%20MAG%20counts.png)
+
+{{< embed code.qmd#datatable2 >}}
+
+{{< embed code.qmd#plot1 >}}
+
+The graph above displays the MAG counts at each NEON subplot and is colored by site.
+
+{{< embed code.qmd#plot2 >}}
+
+The graph above displays the total number of MAGs at each site and is colored by fill.
+
+{{< embed code.qmd#plot3 >}}
+
+The graph above displays the count of novel bacteria genera discovered per their phyla.
+
+## WREF Site Data
+
+{{< embed code.qmd#plot4 >}}
+
+The graph above displays the number of MAGs in each phylum at WREF and is colored by class.
+
+## Acidobacteriota Data
+
+{{< embed code.qmd#plot5 >}}
+
+The graph above displays the count of acidobacteria found at each NEON site and is colored by class.
 
 # Discussion
 
 # Conclusions
-
-
-

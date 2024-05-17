@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -66,6 +66,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -120,15 +123,16 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#motivating-reasons" id="toc-motivating-reasons" class="nav-link" data-scroll-target="#motivating-reasons">Motivating Reasons</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
+  <li><a href="#neon-data" id="toc-neon-data" class="nav-link" data-scroll-target="#neon-data">NEON Data</a></li>
   <li><a href="#data-collection-site-wref" id="toc-data-collection-site-wref" class="nav-link" data-scroll-target="#data-collection-site-wref">Data Collection Site: WREF</a></li>
   <li><a href="#bacterial-phylum-acidobacteriota" id="toc-bacterial-phylum-acidobacteriota" class="nav-link" data-scroll-target="#bacterial-phylum-acidobacteriota">Bacterial Phylum: Acidobacteriota</a></li>
   </ul></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul class="collapse">
-  <li><a href="#libraries-and-wrangling" id="toc-libraries-and-wrangling" class="nav-link" data-scroll-target="#libraries-and-wrangling">Libraries and Wrangling</a></li>
-  <li><a href="#wref-site" id="toc-wref-site" class="nav-link" data-scroll-target="#wref-site">WREF Site</a></li>
-  <li><a href="#acidobacteriota" id="toc-acidobacteriota" class="nav-link" data-scroll-target="#acidobacteriota">Acidobacteriota</a></li>
+  <li><a href="#neon-data-1" id="toc-neon-data-1" class="nav-link" data-scroll-target="#neon-data-1">NEON Data</a></li>
+  <li><a href="#wref-site-data" id="toc-wref-site-data" class="nav-link" data-scroll-target="#wref-site-data">WREF Site Data</a></li>
+  <li><a href="#acidobacteriota-data" id="toc-acidobacteriota-data" class="nav-link" data-scroll-target="#acidobacteriota-data">Acidobacteriota Data</a></li>
   </ul></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
@@ -167,6 +171,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
+<section id="neon-data" class="level2">
+<h2 class="anchored" data-anchor-id="neon-data">NEON Data</h2>
+<p>The National Ecological Observatory Network (NEON) is a collective working towards better understanding ecosystems in the United States and how they are changing. It is comprised of data collected from across the country including freshwater and terrestrial ecosystems ranging from steams and rivers to deserts. Through collaboration between a myriad of scientific communities it has collected information with the aim of optimizing technology and construction to maintaining ecosystems.</p>
+</section>
 <section id="data-collection-site-wref" class="level2">
 <h2 class="anchored" data-anchor-id="data-collection-site-wref">Data Collection Site: WREF</h2>
 <p>The Wind River Experimental Forest is a field site about 40 miles NE of Vancouver, WA in the Gifford Pinchot National Forest. This is in Neon’s Pacific Northwest Domain (D16). The area is populated by douglas firs and western hemlocks of diverse ages. The region’s climate is temperate with an average temperature of 9.2°C and average precipitation of 87.6 in. In the valley of volcanoes, Mt. Rainier and Mt. St.&nbsp;Helens, the soil here is comprised of volcanic ashe, pumice, basalt bedrock, and andesite (leftover from lava flows). Among the animals living in this area are elk, bobcats, cougars, black bears, various birds, and many small mammals. After being used as a seedling nursery for post-wildfire forest rehabilitation for almost a century, the NEON site was established in 2006 and sampling for the project began in 2018.</p>
@@ -196,28 +204,106 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="methods" class="level1">
 <h1>Methods</h1>
+<p>We used Rstudio Posit-Cloud to wrangle, organize, analyze and graphically present the NEON MAGs data for the WREF site and the phylum Actinobacteria. In a Quatro Markdown file we inserted our code chunks that contained data which we had filtered, mutated, joined, and separated just to name a few functions utilized. To present this data we used tools like ggplot, facet wrap, geom bar, geom point, and ggtrees to create elaborate and well-formatted graphs with appropriate titles and keys.</p>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
+<section id="neon-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="neon-data-1">NEON Data</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Screenshot 2024-05-16 at 10.59.56 PM.png" class="img-fluid figure-img"></p>
+<figcaption>Datatable of MAG counts at each NEON site</figcaption>
+</figure>
+</div>
 <div class="quarto-embed-nb-cell">
-<div id="cell-maths" class="cell">
+<div id="cell-datatable1" class="cell">
+<div id="datatable1" class="cell-output cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d3c62521abd80707ee31" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d3c62521abd80707ee31">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["National Grasslands LBJ, Texas, USA","Toolik Field Station, Alaska, USA","Chase Lake Wetlands, North Dakota, USA","Wind River Experimental Forest, Washington, USA","Niwot Ridge, Colorado, USA","Lower Teakettle, Sierra National Forest, California, USA","Caribou Creek Watershed, Alaska, USA","Konza Prairie Bio Station, Kansas, USA","Great Basin, Onaqui, Utah, USA","Guanica State Forest and Biosphere Reserve, Puerto Rico","Yellowstone NP, Wyoming, USA","Healy, Denali National Park, Alaska, USA","Santa Rita Experimental Range, Tucson, Arizona, USA"],[197,149,132,100,88,81,69,69,60,54,50,42,39]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Site<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Site","targets":1},{"name":"n","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-1" href="code.embed-preview.html#cell-datatable1">Source: Code</a></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DT of phylum MAG counts.png" class="img-fluid figure-img"></p>
+<figcaption>Data table of MAG counts per Phylum</figcaption>
+</figure>
+</div>
+<div class="quarto-embed-nb-cell">
+<div id="cell-datatable2" class="cell">
+<div id="datatable2" class="cell-output cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9589d2f3e28e8a17cdb4" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9589d2f3e28e8a17cdb4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"],["Actinobacteriota","Proteobacteria","Acidobacteriota","Verrucomicrobiota",null,"Chloroflexota","Myxococcota","Bacteroidota","Gemmatimonadota","Methylomirabilota","Planctomycetota","Dormibacterota","Eremiobacterota","Desulfobacterota_B","Desulfobacterota","Patescibacteria","Tectomicrobia","Cyanobacteria","Myxococcota_A","Armatimonadota","Chlamydiota","Eisenbacteria","Firmicutes","Krumholzibacteriota","Nitrospirota"],[418,248,181,57,38,35,29,22,16,16,16,11,11,9,5,5,3,2,2,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Phylum<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Phylum","targets":1},{"name":"n","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-2" href="code.embed-preview.html#cell-datatable2">Source: Code</a></div>
+<div class="quarto-embed-nb-cell">
+<div id="cell-plot1" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="about_files/figure-html/code-maths-output-1.png" id="maths" class="img-fluid figure-img"></p>
+<p><img src="about_files/figure-html/code-plot1-output-1.png" id="plot1" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="code.embed-preview.html#cell-maths">Source: Code</a></div>
-<section id="libraries-and-wrangling" class="level3">
-<h3 class="anchored" data-anchor-id="libraries-and-wrangling">Libraries and Wrangling</h3>
+<a class="quarto-notebook-link" id="nblink-3" href="code.embed-preview.html#cell-plot1">Source: Code</a></div>
+<p>The graph above displays the MAG counts at each NEON subplot and is colored by site.</p>
+<div class="quarto-embed-nb-cell">
+<div id="cell-plot2" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_files/figure-html/code-plot2-output-1.png" id="plot2" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-4" href="code.embed-preview.html#cell-plot2">Source: Code</a></div>
+<p>The graph above displays the total number of MAGs at each site and is colored by fill.</p>
+<div class="quarto-embed-nb-cell">
+<div id="cell-plot3" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_files/figure-html/code-plot3-output-1.png" id="plot3" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-5" href="code.embed-preview.html#cell-plot3">Source: Code</a></div>
+<p>The graph above displays the count of novel bacteria genera discovered per their phyla.</p>
 </section>
-<section id="wref-site" class="level2">
-<h2 class="anchored" data-anchor-id="wref-site">WREF Site</h2>
+<section id="wref-site-data" class="level2">
+<h2 class="anchored" data-anchor-id="wref-site-data">WREF Site Data</h2>
+<div class="quarto-embed-nb-cell">
+<div id="cell-plot4" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_files/figure-html/code-plot4-output-1.png" id="plot4" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-6" href="code.embed-preview.html#cell-plot4">Source: Code</a></div>
+<p>The graph above displays the number of MAGs in each phylum at WREF and is colored by class.</p>
 </section>
-<section id="acidobacteriota" class="level2">
-<h2 class="anchored" data-anchor-id="acidobacteriota">Acidobacteriota</h2>
+<section id="acidobacteriota-data" class="level2">
+<h2 class="anchored" data-anchor-id="acidobacteriota-data">Acidobacteriota Data</h2>
+<div class="quarto-embed-nb-cell">
+<div id="cell-plot5" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_files/figure-html/code-plot5-output-1.png" id="plot5" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-7" href="code.embed-preview.html#cell-plot5">Source: Code</a></div>
+<p>The graph above displays the count of acidobacteria found at each NEON site and is colored by class.</p>
 </section>
 </section>
 <section id="discussion" class="level1">
