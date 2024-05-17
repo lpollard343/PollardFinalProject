@@ -13,7 +13,7 @@ bibliography: references_z.bib
 
 # Abstract
 
-Utilizing the coding knowledge and skills learned in Biology 476: Evolutionary Genomics and Bioinformatics, students built a github repository and Quatro website. The website includes graphs and tables created by the students that showcase data from NEON metagenomes. The results are visual representations of data from the WREF collection site in Vancouver, WA as well as data on the bacteria phylum Acidobacteriota. These visuals help to tell of the story of WREF and actinobacteriota and lay the foundation for understanding thow they fit into their greater environments.
+Utilizing the coding knowledge and skills learned in Biology 476: Evolutionary Genomics and Bioinformatics, students built a github repository and Quatro website. The website includes graphs and tables created by the students that showcase data from NEON metagenomes. The results are visual representations of data from the WREF collection site in Vancouver, WA as well as data on the bacteria phylum Acidobacteriota. These visuals help to tell of the story of WREF and actinobacteriota and lay the foundation for understanding how they fit into their greater environments.
 
 # Motivating Reasons
 
