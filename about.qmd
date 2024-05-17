@@ -17,7 +17,7 @@ Utilizing the coding knowledge and skills learned in Biology 476: Evolutionary G
 
 # Motivating Reasons
 
-The motivating reasons behind this project were to further develop my skills in R Posit Cloud, to practice integration and manipulation of data, and to learn about acidobacteriota and the WREF site. I took Biology 478: Human Genome Analysis in the fall of 2023 and this gave me some foundational skills for working with data in R. Through my engagement with this project, I have learned more about data wrangling, ggplot, ggtrees, quatro website building, and github repositories. These will be very useful to my future career in biological research as I will be able to analyze and present data that I have collected myself for presentations and papers. The topic of this project, acidobacteriota and WREF, have given me insight into a particular bacterial phylum and its evolutionary lineage. It also shed light onto how data collection sites are chosen, managed, and utilized.
+The motivating reasons behind this project were to further develop my skills in R Posit Cloud, to practice integration and manipulation of data, and to learn about Acidobacteriota and the WREF site. I took Biology 478: Human Genome Analysis in the fall of 2023 and this gave me some foundational skills for working with data in R. Through my engagement with this project, I have learned more about data wrangling, ggplot, ggtrees, quatro website building, and github repositories. These will be very useful to my future career in biological research as I will be able to analyze and present data that I have collected myself for presentations and papers. The topic of this project, acidobacteriota and WREF, have given me insight into a particular bacterial phylum and its evolutionary lineage. It also shed light onto how data collection sites are chosen, managed, and utilized.
 
 # Introduction
 
@@ -41,7 +41,7 @@ This phylum of bacteria is gram-negative and are most prevalent in soils (though
 
 # Methods
 
-We used Rstudio Posit-Cloud to wrangle, organize, analyze and graphically present the NEON MAGs data for the WREF site and the phylum Actinobacteria. In a Quatro Markdown file we inserted our code chunks that contained data which we had filtered, mutated, joined, and separated just to name a few functions utilized. To present this data we used tools like ggplot, facet wrap, geom bar, geom point, and ggtrees to create elaborate and well-formatted graphs with appropriate titles and keys.
+We used Rstudio Posit-Cloud to wrangle, organize, analyze and graphically present the NEON MAGs data for the WREF site and the phylum Acidobacteria. In a Quatro Markdown file we inserted our code chunks that contained data which we had filtered, mutated, joined, and separated just to name a few functions utilized. To present this data we used tools like ggplot, facet wrap, geom bar, geom point, and ggtrees to create elaborate and well-formatted graphs with appropriate titles and keys.
 
 # Results
 
@@ -73,6 +73,22 @@ The graph above displays the count of novel bacteria genera discovered per their
 
 The graph above displays the number of MAGs in each phylum at WREF and is colored by class.
 
+{{< embed code.qmd#tree2 >}}
+
+The tree above displays the phylum of bacteria found at WREF.
+
+{{< embed code.qmd#plot11 >}}
+
+The bar graph above displays the bin quality, medium (MQ) or high (HQ), of the data collected from WREF.
+
+{{< embed code.qmd#plot12 >}}
+
+The bar graph above displays the soil composition found at WREF. Soil was classified as either organic (O) or mineral (M).
+
+{{< embed code.qmd#plot13 >}}
+
+The scatterplot above displays the soil in water pH versus the soil temperature of samples collected at WREF.
+
 ## Acidobacteriota Data
 
 ```{r}
@@ -86,6 +102,18 @@ knitr::include_url("data/sankey-NEON_MAG_co_pavian_acido.txt.html")
 ```
 
 The sankey plot above depicts the taxonomic levels of Acidobacteriota and is filtered for the combined assemblies.
+
+{{< embed code.qmd#tree1 >}}
+
+The tree above displays the phylum Acidobacteriota's taxonomic clade data and is colored by class.
+
+{{< embed code.qmd#tree2 >}}
+
+The tree above displays the phylum Acidobacteriota in relation to other bacterial phyla.
+
+{{< embed code.qmd#tree3 >}}
+
+The tree above displays bacteria phlya that were found in samples where the soil in water had a pH of less than 5.
 
 {{< embed code.qmd#plot5 >}}
 
@@ -109,9 +137,15 @@ The scatterplot above displays the pH of soil samples in CaCl by the ecosystem s
 
 {{< embed code.qmd#plot10 >}}
 
-The bin plot above displays the pH of soil samples in water by the class of Actinobacteriota found in them. It is colored by count where darker colors mean higher counts.
+The bin plot above displays the pH of soil samples in water by the class of Acidobacteriota found in them. It is colored by count where darker colors mean higher counts.
 
 ## Acidobacteriota at WREF
+
+```{r}
+knitr::include_url("data/sankey-NEON_MAG_ind_pavian_WREF.txt.html")
+```
+
+The sankey plot above depicts the taxonomic levels of Acidobacteria found at WREF and is filtered for the individual assemblies.
 
 # Discussion
 
